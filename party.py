@@ -10,10 +10,15 @@ app.secret_key = "SECRETSECRETSECRET"
 def is_mel(name, email):
     """Is this user Mel?
 
-    >>> is_mel('Mel Melitpolski', 'mel@ubermelon.com')
-    True
-    >>> is_mel('Judith Butler', 'judith@awesome.com')
-    False
+    Example:
+        >>> is_mel('Mel Melitpolski', 'mel@ubermelon.com')
+        True
+        >>> is_mel('Judith Butler', 'judith@awesome.com')
+        False
+        >>> is_mel('Mel Melitpolski', 'hello@gmail.com')
+        True
+        >>> is_mel('Kelly', 'mel@ubermelon.com')
+        True
     """
 
 
@@ -24,6 +29,41 @@ def most_and_least_common_type(treats):
     """Given list of treats, return most and least common treat types.
 
     Return most and least common treat types in tuple of format (most, least).
+    
+    Example:
+
+        >>> treats = [
+        ...     {'type': 'dessert'},
+        ...     {'type': 'dessert'},
+        ...     {'type': 'appetizer'},
+        ...     {'type': 'dessert'},
+        ...     {'type': 'appetizer'},
+        ...     {'type': 'drink'},
+        ... ]
+        >>> most_and_least_common_type(treats)
+        ('dessert', 'drink')
+
+        >>> treats = [
+        ...     {'type': 'dessert'},
+        ...     {'type': 'dessert'},
+        ...     {'type': 'dessert'},
+        ...     {'type': 'dessert'},
+        ...     {'type': 'dessert'},
+        ...     {'type': 'dessert'},
+        ... ]
+        >>> most_and_least_common_type(treats)
+        'dessert'
+
+        >>> treats = [
+        ...     {'type': 'dessert'},
+        ...     {'type': 'dessert'},
+        ...     {'type': 'appetizer'},
+        ...     {'type': 'appetizer'},
+        ...     {'type': 'drink'},
+        ... ]
+        >>> most_and_least_common_type(treats)
+        ('appetizer', 'drink')
+
     """
 
     types = {}
@@ -45,7 +85,11 @@ def most_and_least_common_type(treats):
             least_count = count
             least_type = treat_type
 
-    return (most_type, least_type)
+    print(types)
+    if most_type == least_type:
+        return most_type
+    else:
+        return (most_type, least_type)
 
 
 def get_treats():
